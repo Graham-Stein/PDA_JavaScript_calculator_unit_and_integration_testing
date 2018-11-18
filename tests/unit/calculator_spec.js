@@ -35,4 +35,15 @@ describe('calculator', function () {
     assert.equal(3, calculator.runningTotal);
   });
 
+  it('should concatenate multiple digit numbers in entry field', function() {
+    calculator.runningTotal = 22;
+    calculator.newTotal = false;
+    const testConcat = calculator.numberClick(10);
+    assert.equal(2210, calculator.runningTotal);
+  });
+
+  it('should chain multiple operations together', function() {
+    calculator.runningTotal = 10;
+    
+  });
 });
