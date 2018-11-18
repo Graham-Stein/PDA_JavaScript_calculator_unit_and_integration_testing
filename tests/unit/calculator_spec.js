@@ -19,7 +19,7 @@ describe('calculator', function () {
 
   it('should subtract numbers', function() {
     calculator.previousTotal = 7;
-    const testSubtract4 = calculator.subtract(4);
+    const testSubtract4 = calculator.subtract('4');
     assert.equal(3, calculator.runningTotal)
   });
 
@@ -43,7 +43,13 @@ describe('calculator', function () {
   });
 
   it('should chain multiple operations together', function() {
-    calculator.runningTotal = 10;
-    
+    calculator.numberClick('1');
+    calculator.numberClick('0');
+    calculator.operatorClick ('+');
+    calculator.numberClick('20');
+    calculator.operatorClick ('/');
+    calculator.numberClick('10');
+    calculator.operatorClick ('=');
+    assert.equal(3, calculator.runningTotal);
   });
 });
