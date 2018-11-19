@@ -36,10 +36,10 @@ describe('calculator', function () {
   });
 
   it('should concatenate multiple digit numbers in entry field', function() {
-    calculator.runningTotal = 22;
-    calculator.newTotal = false;
-    const testConcat = calculator.numberClick(10);
-    assert.equal(2210, calculator.runningTotal);
+    calculator.numberClick('1');
+    calculator.numberClick('0');
+    const testConcat = calculator.numberClick('10');
+    assert.equal(1010, calculator.runningTotal);
   });
 
   it('should chain multiple operations together', function() {
@@ -51,5 +51,16 @@ describe('calculator', function () {
     calculator.numberClick('10');
     calculator.operatorClick ('=');
     assert.equal(3, calculator.runningTotal);
+  });
+
+  it('should allow clear function to clear number from running total without clearing function in process', function() {
+    calculator.numberClick('1');
+    calculator.numberClick('0');
+    calculator.operatorClick ('+');
+    calculator.numberClick('20');
+    calculator.clearClick();
+    calculator.numberClick('10');
+    calculator.operatorClick('=');
+    assert.equal(20, calculator.runningTotal);
   });
 });
